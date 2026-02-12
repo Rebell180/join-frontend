@@ -1,0 +1,88 @@
+/**
+ * Component styles for design guide. 
+*/
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.content {
+    width: 100dvw;
+    height: 100dvh;
+    max-width: 1920px;
+    padding: 0 5rem;
+}
+
+// #region Buttons
+
+    .btn-set {
+        @include m.marpad ($pad: 1rem 2rem);
+        @include m.flex($jc: center, $alit: center, $gap: 1rem);
+        font-size: 20px;
+        color: v.$background-color-fields;
+        background: v.$highlight-color1;
+        border: 1px solid v.$highlight-color1;
+        border-radius: 8px;
+        &:hover {
+            background: v.$highlight-color2;
+            border: 1px solid v.$highlight-color2;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+            background: linear-gradient(145deg, #999, #777);
+            box-shadow: none;
+            transform: none;
+        }
+    }
+
+    .btn-default {
+        @include m.marpad ($pad: 1rem 2rem);
+        @include m.flex($jc: center, $alit: center, $gap: 1rem);
+        font-size: 20px;
+        color: v.$highlight-color1;
+        border: 1px solid v.$highlight-color1;
+        border-radius: 8px;
+        &:hover {
+            border: 1px solid v.$highlight-color2;
+            color: v.$highlight-color2;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+// #endregion Buttons
+
+// #region Input Fields
+    .default-input {
+        @include m.borRad($c: rgba(0, 0, 0, 0.2), $radius: 8px);
+        @include m.marpad($pad: 1rem);
+        font-size: 16px;
+
+        &:focus-visible {
+            border-inline: none;
+            border: 1px solid v.$highlight-color2;
+            outline: none;
+        }
+    }
+// #endregion Input Fields
+
+// #region Errors
+
+    .error {
+        width: 100%;
+        max-width: 100%;
+        height: 2.4rem;
+        padding-left: 2rem;
+        display: -webkit-box;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        color: v.$error-color;
+        line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+// #endregion Errors

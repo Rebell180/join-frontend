@@ -1,1 +1,31 @@
-<p>login works!</p>
+
+
+<section id="section-login-container" class="content">
+
+    <div id="login-mask">
+
+        <div id="login-form-header-container">
+            <h1>Log in</h1>
+            <div class="separator"></div>
+        </div>
+        
+        <form id="login-form-group" formGroup="userModel">
+            <input type="email" id="form-input-email" class="default-input" placeholder="Email" [formField]="loginForm.email">
+            <input type="password" id="form-input-password" class="default-input" placeholder="Password" [formField]="loginForm.password">
+            <div id="login-btn-container">
+                <button type="button" class="btn-set" (click)="login()">Login</button>
+                <button type="button" class="btn-default" (click)="login()">Login</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+<aside id="logo-presentation-container" class="content">
+    <img id="logo-presentation" src="assets/images/contact/JoinLogo.png" alt="logo of join. A big blue letter J followed by small letters 'oin'">
+</aside>
+
+<aside id="sign-up-header">
+    <span>No a Join user?</span>
+    <button class="btn-set">Sign up</button>
+</aside>

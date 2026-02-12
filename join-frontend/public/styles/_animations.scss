@@ -1,0 +1,56 @@
+/**
+ * Animations
+ * Here you'll find all animations as mixins, which are used in this app.
+*/
+
+// #region Slide Animations
+
+  @mixin slightInFromRightAnimation() {
+    animation: slideInFromRight 1s ease-out forwards;
+
+    @keyframes slideInFromRight {
+      from {
+        transform: translateX(20dvw);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+  
+  @mixin slightOutToRightAnimation() {
+    animation: slideOutToRight 0.4s ease-in forwards;
+
+    @keyframes slideOutToRight {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100vw);
+        opacity: 0;
+      }
+    }
+  }
+
+// #endregion Slight Animations
+
+// #region Zoom Animations
+
+  // animation on Login screen from big to small
+  @mixin zoomOut() {
+    animation: zoomOutAnimation 4500ms ease forwards;
+
+    @keyframes zoomOutAnimation {
+      to {
+        width: 64px;
+        height: 77px;
+        top: 5rem;
+        background-color: transparent;
+      }
+    }
+  }
+
+// #endregion Zoom Animations

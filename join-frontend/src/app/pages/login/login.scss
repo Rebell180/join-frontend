@@ -1,0 +1,73 @@
+@use '../../../../public/styles/index' as *;
+
+// @forward '../../../../public/styles/component-styles';
+
+
+#logo-presentation-container {
+    width: 95%;
+    height: 95%;
+    @include absolute($top:0, $left:5rem);
+    @include flex($alit: center, $jc: center);
+    @include zoomOut();
+    padding: 0;
+    z-index: 3;
+    background: $background-color-area;
+    
+    #logo-presentation {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        // @include zoomOut();
+    }
+}
+
+#sign-up-header {
+    @include absolute($top: 5rem, $right: 5rem);
+    @include flex($alit: center, $jc: end, $gap: 2rem);
+    width: 100%;
+    z-index: 2;
+}
+
+#section-login-container {
+
+    background-color: #F6F7F8;
+
+    @include flex($fldir: column, $jc: center, $alit: center);
+    overflow: hidden;
+
+    #login-mask {
+        @include flex($fldir: column, $jc: center, $alit: center);
+        @include boxSh($right: 0, $bottom: 0, $all: 0.5px, $blur: 10px, $c: rgba(0, 0, 0, 0.05));
+        background-color: white;
+        border-radius: 16px;
+        // border: 1px solid rgba(0, 0, 0, 0.1);
+
+        width: 45dvw;
+        height: 50dvh;
+        min-height: 50rem;
+
+        #login-form-header-container {
+            @include flex($fldir: column, $jc: center, $alit: center);
+            margin: 2%;
+
+            h1 {
+                font-family: Interbold, sans-serif;
+                font-size: clamp(18px, 5dvw, 64px);
+                font-weight: 800;
+                margin-bottom: 2rem;
+            }
+            .separator {
+                width: 90%;
+                height: 2px;
+                background-color: #29ABE2;
+            }
+        }
+
+        #login-form-group {
+            @include flex($fldir: column, $jc: center, $alit: center);
+        }
+    }
+
+
+
+}
