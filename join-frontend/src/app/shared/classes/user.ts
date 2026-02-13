@@ -1,19 +1,19 @@
 import { IUserObject } from "../interfaces/IUserObject";
 
 export class User {
-    email: string = "";
-    username: string = "";
-    fullname: string = "";
-    password: string = "";
     token: string = "";
+    fullname: string = "";
+    email: string = "";
+    user_id: string = "";
+    password: string = "";
 
     constructor(data?: IUserObject) {
         if(data) {
-            this.email = data.email;
-            this.username = data.username;
-            this.fullname = data.fullname;
-            this.password = data.password;
             this.token = data.token;
+            this.fullname = data.fullname;
+            this.email = data.email;
+            this.user_id = data.user_id;
+            this.password = data.password;
         }
     }
 }

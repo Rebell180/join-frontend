@@ -1,6 +1,8 @@
-import { Component, signal} from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../shared/classes/user';
 import { email, form, required, FormField } from '@angular/forms/signals';
+import { AuthService } from '../../shared/services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +12,9 @@ import { email, form, required, FormField } from '@angular/forms/signals';
 })
 export class Login {
 
+  isLoading = signal(false);
+  errorMessage = signal<string | null>(null);
+
   userModel = signal<User>(new User());
   loginForm = form(this.userModel, (fieldPath) => {
     required(fieldPath.email, {message: 'Email is required'});
@@ -17,13 +22,30 @@ export class Login {
     required(fieldPath.password, {message: 'Password is required'});
   });
 
-  protected login(isGuestLogin = false): void {
-    console.log("Email: " + this.userModel().email + " and Password: " + this.userModel().password); 
+  protected authService = inject(AuthService);
+  protected router = inject(Router);
+
+  constructor() {}
+
+  protected async login(isGuestLogin = false): Promise<void> {
+    let isLoggedIn: boolean;
+
+    this.isLoading.set(true);      
+    this.errorMessage.set(null);
+
+    if (isGuestLogin) {
+      // isLoggedIn = await this.authService.loginGuest(); // TODO own endpoint
+      isLoggedIn = false;
+    } else if(!this.loginForm().valid()) {
+      isLoggedIn = false;
+    } else {
+      isLoggedIn = await this.authService.login(this.userModel().email, this.userModel().password);
+    }
+    console.log('isLoggedIn: ' + isLoggedIn);
+    if(isLoggedIn) {
+      this.router.navigate(['/summary']);
+    } else {
+      this.errorMessage.set('Please fill in all fields correctly.');
+    }
   }
-
-
-
-
-
-
 }

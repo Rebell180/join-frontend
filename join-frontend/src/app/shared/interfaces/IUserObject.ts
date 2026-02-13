@@ -1,7 +1,7 @@
 export interface IUserObject {
-    email: string;
-    username: string;
-    fullname: string;
-    password: string;
     token: string;
+    fullname: string;
+    email: string;
+    user_id: string;
+    password: string;
 }

@@ -10,6 +10,9 @@
         </div>
         
         <form id="login-form-group" formGroup="userModel">
+            @if (errorMessage()) {
+                <div class="error-message" role="alert">{{ errorMessage() }}</div>
+            }
             <div class="icon-input">
                 <input type="email" id="form-input-email" placeholder="Email" [formField]="loginForm.email">
                 <img src="assets/images/contact/mail.png" alt="shows an evelope for entering email.">
@@ -19,8 +22,10 @@
                 <img src="assets/images/contact/person.png" alt="">
             </div>
             <div id="login-btn-container">
-                <button type="button" class="btn-set" (click)="login()">Login</button>
-                <button type="button" class="btn-default" (click)="login(true)">Guest Login</button>
+                <button type="button" class="btn-set" (click)="login()" [disabled]="isLoading()">
+                    {{ isLoading() ? 'log in...' : 'Login' }}
+                </button>
+                <button type="button" class="btn-default" (click)="login(true)" [disabled]="isLoading()">Guest Login</button>
             </div>
         </form>
     </div>
