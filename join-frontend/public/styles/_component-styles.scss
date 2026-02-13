@@ -53,15 +53,42 @@
 // #endregion Buttons
 
 // #region Input Fields
-    .default-input {
-        @include m.borRad($c: rgba(0, 0, 0, 0.2), $radius: 8px);
+    .icon-input {
+        width: 100%;
+        @include m.flex($alit: center);
+        @include m.borRad($c: rgba(0, 0, 0, 0.2), $radius: 16px);
         @include m.marpad($pad: 1rem);
         font-size: 16px;
 
-        &:focus-visible {
+        &:focus-within {
             border-inline: none;
             border: 1px solid v.$highlight-color2;
+
+            
+        }
+        
+        input {
+            width: 100%;
+            border: none;
             outline: none;
+            margin: 0 2rem;
+            font-size: 20px;
+
+            // autofill would give an other background without that. 
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+                -webkit-box-shadow: 0 0 0 1000px #fff inset;
+                -webkit-text-fill-color: #000;
+                transition: background-color 9999s ease-in-out 0s;
+            }
+        }
+
+        img {
+            width: 32px;
+            height: 32px;
+            margin: 0 2rem;
         }
     }
 // #endregion Input Fields

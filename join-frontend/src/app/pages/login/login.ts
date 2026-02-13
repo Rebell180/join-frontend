@@ -17,7 +17,7 @@ export class Login {
     required(fieldPath.password, {message: 'Password is required'});
   });
 
-  protected login(): void {
+  protected login(isGuestLogin = false): void {
     console.log("Email: " + this.userModel().email + " and Password: " + this.userModel().password); 
   }
 

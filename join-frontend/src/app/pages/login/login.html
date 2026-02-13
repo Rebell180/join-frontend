@@ -10,11 +10,17 @@
         </div>
         
         <form id="login-form-group" formGroup="userModel">
-            <input type="email" id="form-input-email" class="default-input" placeholder="Email" [formField]="loginForm.email">
-            <input type="password" id="form-input-password" class="default-input" placeholder="Password" [formField]="loginForm.password">
+            <div class="icon-input">
+                <input type="email" id="form-input-email" placeholder="Email" [formField]="loginForm.email">
+                <img src="assets/images/contact/mail.png" alt="shows an evelope for entering email.">
+            </div>
+            <div class="icon-input">
+                <input type="password" id="form-input-password" class="default-input" placeholder="Password" [formField]="loginForm.password">
+                <img src="assets/images/contact/person.png" alt="">
+            </div>
             <div id="login-btn-container">
                 <button type="button" class="btn-set" (click)="login()">Login</button>
-                <button type="button" class="btn-default" (click)="login()">Login</button>
+                <button type="button" class="btn-default" (click)="login(true)">Guest Login</button>
             </div>
         </form>
     </div>
@@ -28,4 +34,9 @@
 <aside id="sign-up-header">
     <span>No a Join user?</span>
     <button class="btn-set">Sign up</button>
+</aside>
+
+<aside id="policy-notice-container">
+    <a href="http://127.0.0.1:4200/privacy">Privacy Policy</a>
+    <a href="http://127.0.0.1:4200/legal">Legal notice</a>
 </aside>
