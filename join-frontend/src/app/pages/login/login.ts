@@ -27,21 +27,23 @@ export class Login {
 
   constructor() {}
 
-  protected async login(isGuestLogin = false): Promise<void> {
+  protected async login(isLoginGuest = false): Promise<void> {
     let isLoggedIn: boolean;
 
     this.isLoading.set(true);      
     this.errorMessage.set(null);
 
-    if (isGuestLogin) {
-      // isLoggedIn = await this.authService.loginGuest(); // TODO own endpoint
-      isLoggedIn = false;
+    if (isLoginGuest) {
+      isLoggedIn = await this.authService.loginGuest();
     } else if(!this.loginForm().valid()) {
       isLoggedIn = false;
     } else {
       isLoggedIn = await this.authService.login(this.userModel().email, this.userModel().password);
     }
+    
+    this.isLoading.set(false);
     console.log('isLoggedIn: ' + isLoggedIn);
+    
     if(isLoggedIn) {
       this.router.navigate(['/summary']);
     } else {

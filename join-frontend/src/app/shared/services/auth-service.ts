@@ -8,14 +8,30 @@ import { env } from '../../environment/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  // private readonly apiUrl = env.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   public async login(email: string, password: string): Promise<boolean> {
     const credentials = { email: email, password: password };
     try {
-      const response = await firstValueFrom(this.http.post<User>(env.baseUrl + env.endpoints.auth.login, credentials));
+      const response = await firstValueFrom(this.http.post<User>((env.baseUrl + env.endpoints.auth.login), credentials));
+      const user: User = response as User;
+
+      if (user && user.token && user.token !== '') {
+        this.saveCurrentLogin(user);
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      console.error('Login request failed', err);
+      return false;
+    }
+  }
+
+  public async loginGuest(): Promise<boolean> {
+    try {
+      const response = await firstValueFrom(this.http.post<User>(env.baseUrl + env.endpoints.auth.loginguest, {}));
       const user: User = response as User;
 
       if (user && user.token && user.token !== '') {
@@ -47,8 +63,4 @@ export class AuthService {
   private deleteCurrentLogin(): void {
     localStorage.removeItem('user');
   }
-
-  
-
-  
 }
