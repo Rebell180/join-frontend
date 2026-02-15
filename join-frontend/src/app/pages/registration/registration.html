@@ -1,1 +1,58 @@
-<p>registration works!</p>
+<section id="section-registration-container" class="content">
+
+    <div id="registration-mask">
+
+        <div id="register-form-header-container">
+            <h1>Sign up</h1>
+            <div class="separator"></div>
+        </div>
+
+        <form id="registration-form-group" formGroup="userModel">
+            @if (errorMessage()) {
+                <div class="error-message" role="alert">{{ errorMessage() }}</div>
+            }
+
+            <div class="icon-input">
+                <input type="name" id="form-input-name" placeholder="Name" [formField]="loginForm.fullname">
+                <img src="assets/images/contact/person.png" alt="shows an evelope for entering full name.">
+            </div>
+
+            <div class="icon-input">
+                <input type="email" id="form-input-email" placeholder="Email" [formField]="loginForm.email">
+                <img src="assets/images/contact/mail.png" alt="shows an evelope for entering email.">
+            </div>
+
+            <div class="icon-input">
+                <input type="password" id="form-input-password" placeholder="Password" [formField]="loginForm.password">
+                <img src="assets/images/contact/person.png" alt="">
+            </div>
+
+            <div class="icon-input">
+                <input type="password" id="form-input-repeated-password" placeholder="repeat Password" [formField]="loginForm.repeated_password">
+                <img src="assets/images/contact/person.png" alt="">
+            </div>
+
+            <div class="policy-checkbox-container">
+                <input type="checkbox" name="accept-policy" id="policy-checkbox">
+                <span>I accept the </span>
+                <a routerLink="/privacy-policy">Privacy Policy</a>
+            </div>
+
+            <div id="registration-btn-container">
+                <button type="button" class="btn-set" (click)="register()" [disabled]="isLoading() && isPolicyAccepted()">
+                    {{ isLoading() ? 'signing up...' : 'Sign up' }}
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<aside id="logo-presentation-container" class="content">
+    <img id="logo-presentation" src="assets/images/contact/JoinLogo.png" alt="logo of join. A big blue letter J followed by small letters 'oin'">
+</aside>
+
+<aside id="policy-notice-container">
+    <a routerLink="/privacy-policy">Privacy Policy</a>
+    <a routerLink="/legal-notice">Legal notice</a>
+</aside>

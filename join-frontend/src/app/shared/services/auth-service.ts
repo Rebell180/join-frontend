@@ -11,6 +11,27 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  public async register(fullname: string, email: string, password: string, repeated_password: string): Promise<boolean> {
+    const credentials = { fullname: fullname, email: email, password: password, repeated_password: repeated_password };
+
+    try { 
+      const response = await firstValueFrom(this.http.post<User>((env.baseUrl + env.endpoints.auth.registration), credentials));
+      const user: User = response as User;
+
+      if (user && user.token && user.token !== '') {
+        // this.saveCurrentLogin(user);
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      console.error('Register request failed. ', err)
+      return false;
+    }
+
+    return false;
+  }
+
   public async login(email: string, password: string): Promise<boolean> {
     const credentials = { email: email, password: password };
     try {
@@ -24,7 +45,7 @@ export class AuthService {
 
       return false;
     } catch (err) {
-      console.error('Login request failed', err);
+      console.error('Login request failed. ', err);
       return false;
     }
   }
