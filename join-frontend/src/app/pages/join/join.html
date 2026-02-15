@@ -1,1 +1,14 @@
-<p>join works!</p>
+<app-header></app-header>
+<app-navigation (selectedSection)="changeSection($event)"></app-navigation>
+@if (navType() == NavType.CONTACT) {
+    <!-- <app-contact></app-contact> -->
+}
+@else if (navType() == NavType.ADDTASK) {
+    <!-- <app-addtask></app-addtask> -->
+}
+@else if (navType() == NavType.BOARD) {
+    <!-- <app-board></app-board> -->
+}
+@else if (navType() == NavType.SUMMARY) {
+    <!-- <app-summary></app-summary> -->
+}

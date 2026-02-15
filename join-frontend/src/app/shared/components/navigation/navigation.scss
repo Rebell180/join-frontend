@@ -1,0 +1,51 @@
+@use '../../../../../public/styles/index' as *;
+
+#section-nav-container {
+    width: 200px;
+    height: 100dvh;
+    @include flex($fldir: column, $alit: center, $jc: space-between);
+    background: $highlight-color1;
+    padding: 50px 0;
+
+    #nav-item-group-container {
+        width: 100%;
+        @include flex($fldir: column, $alit: center, $jc: center);
+        div {
+            width: 100%;
+            @include flex($alit: center);
+            padding: 5px 30px;
+
+            img {
+                width: 32px;
+                height: 32px;
+                margin-right: 2rem;
+            }
+            span {
+                color: $background-color-area;
+            }
+
+            &:hover {
+                background: #2a3d59;
+            }
+        
+            &.active {
+                background: #091931;
+            }
+        }
+    }
+
+    #nav-adds-container {
+        width: 100%;
+        @include flex($fldir: column, $alit: center, $gap: 1rem);
+
+        a {
+            color: $background-color-area;
+            opacity: 0.3;
+
+            &:hover {
+                font-family: InterBold, sans-serif;
+                color: $highlight-color2;
+            }
+        }
+    }
+}
