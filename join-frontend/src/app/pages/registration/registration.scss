@@ -1,0 +1,89 @@
+@use '../../../../public/styles/index' as *;
+
+#logo-presentation-container {
+    width: 64px;
+    height: 77px;
+    @include absolute($top:5rem, $left:5rem);
+    @include flex($alit: center, $jc: center);
+    padding: 0;
+    z-index: 3;
+    background: $background-color-area;
+    background: transparent;
+
+    #logo-presentation {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+#policy-notice-container {
+    width: 100%;
+    @include absolute($bottom: 5rem);
+    @include flex($alit: end, $jc: center, $gap: 2rem);
+
+    a {
+        color: rgba(0, 0, 0, 0.3);
+
+        &:hover {
+            font-family: InterBold, sans-serif;
+            color: $highlight-color2;
+        }
+    }
+}
+
+#section-registration-container {
+    @include flex($fldir: column, $jc: center, $alit: center);
+    background-color: $background-color-area;
+    overflow: hidden;
+
+    #registration-mask {
+        @include flex($fldir: column, $jc: center, $alit: center);
+        @include boxSh($right: 0, $bottom: 0, $all: 0.5px, $blur: 10px, $c: rgba(0, 0, 0, 0.05));
+        background-color: white;
+        border-radius: 16px;
+
+        width: 45dvw;
+        height: 65dvh;
+        min-height: 50rem;
+
+        #registration-form-header-container {
+            @include flex($fldir: column, $jc: center, $alit: center);
+            margin: 2%;
+
+            h1 {
+                font-family: Interbold, sans-serif;
+                font-size: clamp(18px, 5dvw, 64px);
+                font-weight: 800;
+                padding-bottom: 2rem;
+            }
+            .separator {
+                width: 90%;
+                height: 3px;
+                background-color: #29ABE2;
+                margin-bottom: 2rem;
+            }
+        }
+
+        #registration-form-group {
+            width: 65%;
+            @include flex($fldir: column, $jc: center, $alit: center, $gap: 2rem);
+
+            #registration-btn-container{
+                width: 100%;
+                @include flex($jc: space-around);
+            }
+
+            .policy-checkbox-container {
+                width: 100%;
+                @include flex($jc: center, $alit: center, $gap: 0.5rem);
+                input {
+                    width: 10%;
+                    padding-right: 2rem;
+                }
+            }
+        }
+
+        
+    }
+}
