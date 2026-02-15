@@ -1,12 +1,12 @@
 import { Component, inject, signal} from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { User } from '../../shared/classes/user';
 import { email, form, required, FormField } from '@angular/forms/signals';
 import { AuthService } from '../../shared/services/auth-service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormField],
+  imports: [FormField, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -45,7 +45,7 @@ export class Login {
     console.log('isLoggedIn: ' + isLoggedIn);
     
     if(isLoggedIn) {
-      this.router.navigate(['/summary']);
+      this.router.navigate(['/join']);
     } else {
       this.errorMessage.set('Please fill in all fields correctly.');
     }
