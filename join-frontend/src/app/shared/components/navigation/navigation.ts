@@ -46,10 +46,18 @@ export class Navigation {
   constructor() {}
 
   protected selectSection(index: number) {
+    console.log("clicked index: " + index);
     this.navItems.forEach((navItem, i) => {
       navItem.active = false;
-      if (i == index) navItem.active = true;
+      if (i == index) {
+        navItem.active = true;
+        console.log(navItem.title);
+      }
+      // console.log(i);
+      // console.log(index);
+
     });
+
     this.selectedSection.emit(this.navItems[index].navType);
   }
 

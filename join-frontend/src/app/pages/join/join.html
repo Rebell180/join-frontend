@@ -3,16 +3,18 @@
     
     <app-navigation class="join-sidebar" (selectedSection)="changeSection($event)"></app-navigation>
     
-    @if (navType() == NavType.CONTACT) {
-        <!-- <app-contact class="main-content"></app-contact> -->
-    }
-    @else if (navType() == NavType.ADDTASK) {
-        <!-- <app-addtask class="main-content"></app-addtask> -->
-    }
-    @else if (navType() == NavType.BOARD) {
-        <!-- <app-board class="main-content"></app-board> -->
-    }
-    @else if (navType() == NavType.SUMMARY) {
-        <!-- <app-summary class="main-content"></app-summary> -->
+    @switch (navType()) {
+        @case (NavType.CONTACT) {
+            <app-contacts class="main-content"></app-contacts>
+        }
+        @case (NavType.BOARD) {
+            <app-board class="main-content"></app-board>
+        }
+        @case (NavType.ADDTASK) {
+            <app-addtask class="main-content"></app-addtask>
+        }
+        @case (NavType.SUMMARY) {
+            <app-summary class="main-content"></app-summary>
+        }
     }
 </section>
