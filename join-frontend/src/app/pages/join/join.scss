@@ -1,0 +1,30 @@
+@use '../../../../public/styles/index' as *;
+
+#join-main-page {
+    width: 100dvw;
+    height: 100dvh;
+
+    display: grid;
+    grid-template-rows: 10dvh 90dvh;
+    grid-template-columns: 200px 1fr;
+
+    overflow: hidden;
+
+    grid-template-areas:
+    "sidebar header"
+    "sidebar content";
+
+    .join-sidebar {
+        grid-area: sidebar;
+    }
+
+    .join-header {
+        grid-area: header;
+        box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.25);
+    }
+
+    .main-content {
+        grid-area: content;
+        overflow: auto;
+    }
+}

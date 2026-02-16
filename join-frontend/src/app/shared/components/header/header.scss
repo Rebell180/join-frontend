@@ -1,0 +1,33 @@
+@use '../../../../../public/styles/index' as *;
+
+#section-join-header {
+    width: 100%;
+    height: 10dvh;
+    @include flex($alit: center, $jc: space-between);
+    padding: 0 5rem;
+    z-index: 2;
+
+    #header-title {
+        font-family: Interbold, sans-serif;
+    }
+
+    #header-menu-container {
+        width: 20%;
+        @include flex($alit: center, $jc: end, $gap: 2rem);
+
+        img {
+            cursor: pointer;
+        }
+
+        .user-icon-frame {
+            width: 60px;
+            height: 60px;
+            border-radius: 99px;
+            border: 3px solid $highlight-color1;
+            color: $highlight-color2;
+            text-align: center;
+            align-content: center;
+            cursor: pointer;
+        }
+    }
+}
